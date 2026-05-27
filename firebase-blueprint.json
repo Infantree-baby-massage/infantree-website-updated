@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "User lead captured via contact form or quick inquiry",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full Name" },
+        "phone": { "type": "string", "description": "Phone Number" },
+        "email": { "type": "string", "description": "Email Address" },
+        "location": { "type": "string", "description": "Address or general area in Navi Mumbai" },
+        "serviceInterest": { "type": "string", "description": "Service of interest" },
+        "message": { "type": "string", "description": "Optional notes or comments" },
+        "timestamp": { "type": "string", "description": "Creation timestamp" },
+        "source": { "type": "string", "description": "Source channel" }
+      },
+      "required": ["name", "phone", "location"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Subscription booking requested by mother or baby caregivers",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full Name" },
+        "phone": { "type": "string", "description": "Phone Number" },
+        "email": { "type": "string", "description": "Email Address" },
+        "location": { "type": "string", "description": "Address where care is needed" },
+        "selectedPlan": { "type": "string", "description": "Selected care subscription plan" },
+        "notes": { "type": "string", "description": "Customer specific requests" },
+        "timestamp": { "type": "string", "description": "Creation timestamp" },
+        "source": { "type": "string", "description": "Source of booking request" }
+      },
+      "required": ["name", "phone", "location", "selectedPlan"]
+    },
+    "TrialRequest": {
+      "title": "TrialRequest",
+      "description": "Request for a single home baby massage + bath demo session at ₹1,299",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full Name" },
+        "phone": { "type": "string", "description": "Phone Number" },
+        "email": { "type": "string", "description": "Email Address" },
+        "location": { "type": "string", "description": "Home Address in Navi Mumbai" },
+        "notes": { "type": "string", "description": "Massage preferences or due date/baby age" },
+        "timestamp": { "type": "string", "description": "Creation timestamp" },
+        "source": { "type": "string", "description": "Trial Booking Form" }
+      },
+      "required": ["name", "phone", "location"]
+    }
+  },
+  "firestore": {
+    "leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of visitor inquiry leads"
+    },
+    "bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Collection of subscriptions booked"
+    },
+    "trial_requests/{requestId}": {
+      "schema": "TrialRequest",
+      "description": "Collection of trial visit requests"
+    }
+  }
+}

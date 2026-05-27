@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html, body {
+    font-variant-numeric: lining-nums proportional-nums;
+  }
+}
+
+@layer utilities {
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .body-text {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #5f5f5f;
+  }
+}
+
+/* Base resets & scroll smooth offsets */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7.5rem; /* Accommodation for mobile dual-row sticky header */
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5.5rem; /* Accommodation for desktop sticky header */
+  }
+}
+
+/* Keyframe animations as motion fallbacks or simple CSS controllers */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Quality of life classes for luxury branding cards */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar utility for mobile navigation tab bar */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
