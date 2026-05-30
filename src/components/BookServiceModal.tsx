@@ -47,14 +47,15 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       const finalNotes = `Address: ${address}\n\n${notes}`;
 
       const payload = {
-        name: name.substring(0, 200),
-        phone: phone.substring(0, 30),
-        email: email ? email.substring(0, 254) : '',
-        location: combinedLocation.substring(0, 500),
-        selectedPlan: currentPlanObj.name.substring(0, 200),
-        notes: finalNotes.substring(0, 2000),
-        source: 'Website Subscription Reservation',
-        timestamp: new Date().toISOString()
+        srNo: '', 
+        date: new Date().toISOString(), 
+        name: name.substring(0, 200), 
+        phone: phone.substring(0, 30), 
+        location: combinedLocation.substring(0, 500), 
+        notes: finalNotes.substring(0, 2000), 
+        email: email ? email.substring(0, 254) : '', 
+        address: address.substring(0, 500), 
+        selectedPlan: currentPlanObj.name.substring(0, 200) 
       };
 
       await addDoc(collection(db, 'bookings'), payload);
@@ -65,23 +66,6 @@ fetch('https://script.google.com/macros/s/AKfycbyPG6MtFFVed-4HmT2bQaoSp2_8cYCjZU
         body: JSON.stringify(payload)
       }).catch((e) => console.error("Sheet update failed:", e));
       // Async Email Notification
-      fetch('https://formsubmit.co/ajax/Mohdaslamshah987@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `New Infantree Booking: ${payload.name}`,
-          Name: payload.name,
-          Phone: payload.phone,
-          Email: payload.email,
-          Location: payload.location,
-          Plan: payload.selectedPlan,
-          Notes: payload.notes
-        })
-      }).catch(() => {});
-
       setShowSuccess(true);
       onSuccess();
     } catch (err: any) {
