@@ -59,7 +59,7 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       };
 
       await addDoc(collection(db, 'bookings'), payload);
-fetch('https://script.google.com/macros/s/AKfycbyPG6MtFFVed-4HmT2bQaoSp2_8cYCjZUOSuh-9z2xJpNVZ897hCLpF0l2dB4PAWW5loQ/exec', {
+fetch(https://script.google.com/macros/s/AKfycbxf5jGVs8fRoZVYCBgzAPjeSgm6UxxacsWz5S114BD51kfgdIT5UemhUolZD4Fw0hjXjg/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
