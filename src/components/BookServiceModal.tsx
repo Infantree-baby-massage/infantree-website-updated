@@ -57,7 +57,6 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
         address: address.substring(0, 500), 
         selectedPlan: currentPlanObj.name.substring(0, 200) 
       };
-
       await addDoc(collection(db, 'bookings'), payload);
 fetch(https://script.google.com/macros/s/AKfycbxf5jGVs8fRoZVYCBgzAPjeSgm6UxxacsWz5S114BD51kfgdIT5UemhUolZD4Fw0hjXjg/exec', {
         method: 'POST',
