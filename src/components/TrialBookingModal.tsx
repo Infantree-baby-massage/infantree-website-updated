@@ -58,7 +58,7 @@ export default function TrialBookingModal({ isOpen, onClose, onSuccess }: TrialB
       (async () => {
         try {
           await fetch('https://script.google.com/macros/s/AKfycbyPG6MtFFVed-4HmT2bQaoSp2_8cYCjZUOSuh-9z2xJpNVZ897hCLpF0l2dB4PAWW5loQ/exec', {
-            method: 'POST',
+            method: 'POST'
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
