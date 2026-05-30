@@ -54,22 +54,19 @@ export default function TrialBookingModal({ isOpen, onClose, onSuccess }: TrialB
 
       await addDoc(collection(db, 'trial_requests'), payload);
 
-      // Async Email Notification
-      fetch('https://formsubmit.co/ajax/Mohdaslamshah987@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `New Infantree Trial: ${payload.name}`,
-          Name: payload.name,
-          Phone: payload.phone,
-          Email: payload.email,
-          Location: payload.location,
-          Notes: payload.notes
-        })
-      }).catch(() => {});
+      // Async Google Sheet Notification via Webhook
+      (async () => {
+        try {
+          await fetch('https://script.google.com/macros/s/AKfycbyPG6MtFFVed-4HmT2bQaoSp2_8cYCjZUOSuh-9z2xJpNVZ897hCLpF0l2dB4PAWW5loQ/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (e) { 
+          console.error("Google Sheet update failed:", e); 
+        }
+      })();
 
       setShowSuccess(true);
       onSuccess();
