@@ -63,7 +63,7 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       // 2. Send to Google Sheets
       await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
