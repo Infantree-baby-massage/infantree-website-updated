@@ -48,7 +48,7 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
 
       const payload = {
         srNo: '', 
-        date: new Date().toISOString(), 
+        timestamp: new Date().toISOString(), 
         name: name.substring(0, 200), 
         phone: phone.substring(0, 30), 
         location: combinedLocation.substring(0, 500), 
