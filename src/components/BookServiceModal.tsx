@@ -58,7 +58,12 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       };
 
       await addDoc(collection(db, 'bookings'), payload);
-
+fetch('https://script.google.com/macros/s/AKfycbyPG6MtFFVed-4HmT2bQaoSp2_8cYCjZUOSuh-9z2xJpNVZ897hCLpF0l2dB4PAWW5loQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch((e) => console.error("Sheet update failed:", e));
       // Async Email Notification
       fetch('https://formsubmit.co/ajax/Mohdaslamshah987@gmail.com', {
         method: 'POST',
