@@ -47,15 +47,16 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       const finalNotes = `Address: ${address}\n\n${notes}`;
 
       const payload = {
-        name: name.substring(0, 200),
-        phone: phone.substring(0, 30),
-        email: email ? email.substring(0, 254) : '',
-        location: combinedLocation.substring(0, 500),
-        selectedPlan: currentPlanObj.name.substring(0, 200),
-        notes: finalNotes.substring(0, 2000),
-        source: 'Website Subscription Reservation',
-        timestamp: new Date().toISOString()
-      };
+  name: name.substring(0, 200),            // C
+  phone: phone.substring(0, 30),           // D
+  location: combinedLocation.substring(0, 500), // E
+  notes: finalNotes.substring(0, 2000),    // F
+  email: email ? email.substring(0, 254) : '', // G
+  address: address.substring(0, 500),      // H (Added address field as per your sheet)
+  selectedPlan: currentPlanObj.name.substring(0, 200), // I
+  source: 'Website Subscription Reservation',
+  timestamp: new Date().toISOString()
+};
 
       await addDoc(collection(db, 'bookings'), payload);
 
