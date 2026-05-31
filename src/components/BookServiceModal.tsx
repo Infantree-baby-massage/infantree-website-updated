@@ -66,14 +66,13 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     try {
       const data = payload;
       // 'window.fetch' use karne se TypeScript ka strict check hat jata hai
-      await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify(data));
+      
+      setShowSuccess(true);
+      if (onSuccess) onSuccess();
       
       setShowSuccess(true);
       if (onSuccess) onSuccess();
