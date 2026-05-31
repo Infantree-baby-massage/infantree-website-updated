@@ -60,6 +60,18 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
 
       await addDoc(collection(db, 'bookings'), payload);
 
+      // Integration for Google Sheets
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (sheetError) {
+        console.error("Sheets update failed:", sheetError);
+      }
+      
       // Async Email Notification
       fetch('https://formsubmit.co/ajax/Mohdaslamshah987@gmail.com', {
         method: 'POST',
