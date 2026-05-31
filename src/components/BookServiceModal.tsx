@@ -66,10 +66,12 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     try {
       const data = payload;
       // 'window.fetch' use karne se TypeScript ka strict check hat jata hai
-      await (window as any).fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data)
       });
       
