@@ -64,8 +64,9 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     console.log("Sending...");
 
     try {
-      const data: any = payload;
-      await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+      const data = payload;
+      // 'window.fetch' use karne se TypeScript ka strict check hat jata hai
+      await (window as any).fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
@@ -79,10 +80,6 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     } finally {
       setIsSubmitting(false);
     }
-    const handleWhatsAppRedirect = () => {
-    const text = `Hello Infantree Team, I have just secured a slot on your website under the name: ${name} (${phone}) for the ${currentPlanObj.name}. Can we please configure my schedule?`;
-    window.open(`https://wa.me/917304367566?text=${encodeURIComponent(text)}`, '_blank');
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm">
