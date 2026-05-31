@@ -64,16 +64,15 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     console.log("Payload check:", JSON.stringify(payload)); 
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      
-      // Ye line aapke Netlify build error ko fix karegi
-      const result = await (response as any).text(); 
-      console.log("Google Sheets response:", result);
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
       
       setShowSuccess(true);
       onSuccess();
