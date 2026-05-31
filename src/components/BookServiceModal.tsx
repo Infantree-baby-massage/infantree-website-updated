@@ -61,13 +61,17 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       await addDoc(collection(db, 'bookings'), payload);
 
       // 2. Send to Google Sheets
-      await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+    console.log("Payload check:", JSON.stringify(payload)); // Upar wala log
 
+    const response = await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.text(); // Niche wala log
+    console.log("Google Sheets response:", result);
       setShowSuccess(true);
       onSuccess();
     } catch (err: any) {
