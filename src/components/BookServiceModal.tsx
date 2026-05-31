@@ -61,28 +61,27 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       await addDoc(collection(db, 'bookings'), payload);
 
       // 2. Send to Google Sheets
-    console.log("Payload check:", JSON.stringify(payload)); 
+    console.log("Payload check:", JSON.stringify(payload));
 
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        }
-      );
-      
+    // Simple fetch without async/await to avoid TypeScript build errors
+    fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      console.log("Request sent successfully");
       setShowSuccess(true);
       onSuccess();
-    } catch (err: any) {
+    })
+    .catch((err) => {
       console.error(err);
       setErrorStatus('Network error or connection failed. Please try again.');
-    } finally {
+    })
+    .finally(() => {
       setIsSubmitting(false);
-    }
-    };
+    });
 
   const handleWhatsAppRedirect = () => {
     const text = `Hello Infantree Team, I have just secured a slot on your website under the name: ${name} (${phone}) for the ${currentPlanObj.name}. Can we please configure my schedule?`;
