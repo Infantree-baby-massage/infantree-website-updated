@@ -61,28 +61,24 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       await addDoc(collection(db, 'bookings'), payload);
 
       // 2. Send to Google Sheets
-    console.log("Payload check:", JSON.stringify(payload));
+    console.log("Sending...");
 
     try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }
-      );
+      const data: any = payload;
+      await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
       
       setShowSuccess(true);
-      onSuccess();
-    } catch (err: any) {
-      console.error(err);
-      setErrorStatus('Network error or connection failed. Please try again.');
+      if (onSuccess) onSuccess();
+    } catch (err) {
+      console.error("Sheets error:", err);
     } finally {
       setIsSubmitting(false);
     }
-      
     const handleWhatsAppRedirect = () => {
     const text = `Hello Infantree Team, I have just secured a slot on your website under the name: ${name} (${phone}) for the ${currentPlanObj.name}. Can we please configure my schedule?`;
     window.open(`https://wa.me/917304367566?text=${encodeURIComponent(text)}`, '_blank');
