@@ -69,12 +69,13 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
         },
         body: JSON.stringify({
           _subject: `New Infantree Booking: ${payload.name}`,
-          Name: payload.name,
-          Phone: payload.phone,
-          Email: payload.email,
-          Location: payload.location,
-          Plan: payload.selectedPlan,
-          Notes: payload.notes
+          Name: payload.name,        // Column C
+          Phone: payload.phone,      // Column D
+          Location: payload.location,// Column E
+          Notes: payload.notes,      // Column F
+          Email: payload.email,      // Column G
+          Address: payload.address,  // Column H
+          Plan: payload.selectedPlan // Column I
         })
       }).catch(() => {});
 
