@@ -61,17 +61,20 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
       await addDoc(collection(db, 'bookings'), payload);
 
       // 2. Send to Google Sheets
-    console.log("Payload check:", JSON.stringify(payload)); // Upar wala log
+    console.log("Payload check:", JSON.stringify(payload)); 
 
-    const response = await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    const result = await response.text(); // Niche wala log
-    console.log("Google Sheets response:", result);
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyi4Pz-5HfhT0R30K36LXBHM5igRznUrxQud-aeZrAVNxBfxg8sEScYcOhiVllPzkFoJQ/exec', {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      // Ye line aapke Netlify build error ko fix karegi
+      const result = await (response as any).text(); 
+      console.log("Google Sheets response:", result);
+      
       setShowSuccess(true);
       onSuccess();
     } catch (err: any) {
@@ -80,7 +83,7 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
     } finally {
       setIsSubmitting(false);
     }
-  };
+    };
 
   const handleWhatsAppRedirect = () => {
     const text = `Hello Infantree Team, I have just secured a slot on your website under the name: ${name} (${phone}) for the ${currentPlanObj.name}. Can we please configure my schedule?`;
