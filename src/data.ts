@@ -21,7 +21,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
       'Flexible pausing up to 5 days'
     ]
   },
-  {
+  
     id: 'mother-recovery-monthly',
     name: 'Mother Relaxing Care Plan',
     price: 13999,
