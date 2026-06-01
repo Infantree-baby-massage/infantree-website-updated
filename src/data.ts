@@ -73,8 +73,7 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     'Backup caregiver support',
     'Flexible pause up to 15 days'
   ]
-},
-{
+}
     id: 'baby-3m',
     targetServiceId: 'baby',
     months: 3,
