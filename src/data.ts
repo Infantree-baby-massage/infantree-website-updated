@@ -39,7 +39,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'care-bundle-monthly',
     name: 'Care Bundle (Complete Care)',
-    price: 20999,
+    price: 23999,
     durationLabel: 'month',
     description: 'Our most-beloved, complete Mother + Baby wellness and healing experience.',
     features: [
