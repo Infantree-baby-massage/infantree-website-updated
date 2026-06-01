@@ -44,8 +44,8 @@ export default function BookServiceModal({ isOpen, onClose, initialPlanId, onSuc
 
     try {
       const combinedLocation = specificArea ? `${location} - ${specificArea}` : location;
-      const finalNotes = `Address: ${address}\n\n${notes}`;
-
+      const finalNotes = notes;
+      
       const payload = {
   name: name.substring(0, 200),            // C
   phone: phone.substring(0, 30),           // D
