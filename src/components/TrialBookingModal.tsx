@@ -40,7 +40,6 @@ export default function TrialBookingModal({ isOpen, onClose, onSuccess }: TrialB
 
     try {
       const combinedLocation = specificArea ? `${location} - ${specificArea}` : location;
-      const finalNotes = `Address: ${address}\n\n${notes}`;
 
       // Payload ko aise change karein
 const payload = {
