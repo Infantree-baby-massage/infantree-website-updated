@@ -57,6 +57,24 @@ export const BASIC_PLANS: CareServicePlan[] = [
 
 export const LONG_TERM_PLANS: LongTermPlan[] = [
   {
+    {
+  id: 'bundle-3m',
+  targetServiceId: 'bundle',
+  months: 3,
+  totalPrice: 54999,
+  originalPrice: 65997,
+  savingPercent: 17,
+  features: [
+    'Daily baby massage by trained female specialist',
+    'Daily mother recovery massage included',
+    'Gentle newborn bath included',
+    'Dedicated caregiver allocation',
+    'Priority therapist allocation',
+    'Backup caregiver support',
+    'Flexible pause up to 15 days'
+  ]
+},
+{
     id: 'baby-3m',
     targetServiceId: 'baby',
     months: 3,
