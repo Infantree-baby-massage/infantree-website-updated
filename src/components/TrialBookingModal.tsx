@@ -42,15 +42,18 @@ export default function TrialBookingModal({ isOpen, onClose, onSuccess }: TrialB
       const combinedLocation = specificArea ? `${location} - ${specificArea}` : location;
       const finalNotes = `Address: ${address}\n\n${notes}`;
 
-      const payload = {
-        name: name.substring(0, 200),
-        phone: phone.substring(0, 30),
-        email: email ? email.substring(0, 254) : '',
-        location: combinedLocation.substring(0, 500),
-        notes: finalNotes.substring(0, 2000),
-        source: 'Website Trial Booking Modal',
-        timestamp: new Date().toISOString()
-      };
+      // Payload ko aise change karein
+const payload = {
+  name: name.substring(0, 200),            // C
+  phone: phone.substring(0, 30),           // D
+  location: combinedLocation.substring(0, 500), // E
+  notes: notes.substring(0, 2000),         // F (Sirf user ki notes)
+  email: email ? email.substring(0, 254) : '', // G
+  address: address.substring(0, 500),      // H (Sirf Address)
+  selectedPlan: currentPlanObj.name.substring(0, 200), // I
+  source: 'Website Trial Booking Modal',
+  timestamp: new Date().toISOString()
+};
 
       await addDoc(collection(db, 'trial_requests'), payload);
 
