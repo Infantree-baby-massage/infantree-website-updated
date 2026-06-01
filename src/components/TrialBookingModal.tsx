@@ -43,13 +43,13 @@ export default function TrialBookingModal({ isOpen, onClose, onSuccess }: TrialB
 
       // Payload ko aise change karein
 const payload = {
-  name: name.substring(0, 200),            // C
-  phone: phone.substring(0, 30),           // D
-  location: combinedLocation.substring(0, 500), // E
-  notes: notes.substring(0, 2000),         // F (Sirf user ki notes)
-  email: email ? email.substring(0, 254) : '', // G
-  address: address.substring(0, 500),      // H (Sirf Address)
-  selectedPlan: currentPlanObj.name.substring(0, 200), // I
+  name: name.substring(0, 200),
+  phone: phone.substring(0, 30),
+  location: combinedLocation.substring(0, 500),
+  notes: notes.substring(0, 2000),
+  email: email ? email.substring(0, 254) : '',
+  address: address.substring(0, 500),
+  selectedPlan: 'Trial Session',
   source: 'Website Trial Booking Modal',
   timestamp: new Date().toISOString()
 };
