@@ -9,7 +9,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'baby-massage-monthly',
     name: 'Baby Massage Monthly Plan',
-    price: 12999,
+    price: 11999,
     durationLabel: 'month',
     description: 'Nurturing growth and sound sleep through safe daily home infant care.',
     features: [
@@ -24,7 +24,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'mother-recovery-monthly',
     name: 'Mother Relaxing Care Plan',
-    price: 14999,
+    price: 13999,
     durationLabel: 'month',
     description: 'Supporting recovery, relaxation, and muscle comforting for new mothers.',
     features: [
@@ -39,7 +39,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'care-bundle-monthly',
     name: 'Care Bundle (Complete Care)',
-    price: 23999,
+    price: 21999,
     durationLabel: 'month',
     description: 'Our most-beloved, complete Mother + Baby wellness and healing experience.',
     features: [
