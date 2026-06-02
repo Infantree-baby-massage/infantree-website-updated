@@ -21,7 +21,8 @@ export const BASIC_PLANS: CareServicePlan[] = [
       'Flexible pausing up to 5 days'
     ]
   },
-  
+
+  {
     id: 'mother-recovery-monthly',
     name: 'Mother Relaxing Care Plan',
     price: 13999,
@@ -56,7 +57,6 @@ export const BASIC_PLANS: CareServicePlan[] = [
 ];
 
 export const LONG_TERM_PLANS: LongTermPlan[] = [
-  {
     {
   id: 'bundle-3m',
   targetServiceId: 'bundle',
@@ -73,7 +73,8 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     'Backup caregiver support',
     'Flexible pause up to 15 days'
   ]
-}
+},
+{
     id: 'baby-3m',
     targetServiceId: 'baby',
     months: 3,
