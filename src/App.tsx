@@ -791,10 +791,21 @@ export default function App() {
                         <p className="text-xs text-stone-500 mt-1">{plan.description}</p>
                       </div>
 
-                      <div className="flex items-baseline gap-1" id={`price-display-${plan.id}`}>
-                        <span className="text-xl font-display font-semibold text-stone-800">₹{plan.price.toLocaleString('en-IN')}</span>
-                        <span className="text-stone-500 text-xs font-sans">/{plan.durationLabel}</span>
-                      </div>
+                      <div className="flex items-baseline gap-2 flex-wrap" id={`price-display-${plan.id}`}>
+  {plan.originalPrice && (
+    <span className="text-stone-400 text-sm line-through">
+      ₹{plan.originalPrice.toLocaleString('en-IN')}
+    </span>
+  )}
+
+  <span className="text-xl font-display font-semibold text-stone-800">
+    ₹{plan.price.toLocaleString('en-IN')}
+  </span>
+
+  <span className="text-stone-500 text-xs font-sans">
+    /{plan.durationLabel}
+  </span>
+</div>
 
                       {/* Feature checklist */}
                       <ul className="space-y-3 pt-4 border-t border-stone-100 text-xs text-stone-650">
