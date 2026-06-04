@@ -10,7 +10,6 @@ export const BASIC_PLANS: CareServicePlan[] = [
     id: 'baby-massage-monthly',
     name: 'Baby Massage Monthly Plan',
     price: 11999,
-    originalPrice: 25998,
     durationLabel: 'month',
     description: 'Nurturing growth and sound sleep through safe daily home infant care.',
     features: [
@@ -42,6 +41,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
     id: 'care-bundle-monthly',
     name: 'Care Bundle (Complete Care)',
     price: 21999,
+    originalPrice: 25998,
     durationLabel: 'month',
     description: 'Our most-beloved, complete Mother + Baby wellness and healing experience.',
     features: [
