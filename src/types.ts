@@ -51,7 +51,7 @@ export interface CareServicePlan {
 
 export interface LongTermPlan {
   id: string;
-  targetServiceId: 'baby' | 'mother';
+  targetServiceId: 'baby' | 'mother' | 'bundle';
   months: number;
   totalPrice: number;
   originalPrice: number;
