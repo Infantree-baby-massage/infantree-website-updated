@@ -10,6 +10,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
     id: 'baby-massage-monthly',
     name: 'Baby Massage Monthly Plan',
     price: 11999,
+    originalPrice: 25998,
     durationLabel: 'month',
     description: 'Nurturing growth and sound sleep through safe daily home infant care.',
     features: [
