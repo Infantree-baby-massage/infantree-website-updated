@@ -42,6 +42,7 @@ export interface CareServicePlan {
   id: string;
   name: string;
   price: number;
+  originalPrice?: number;
   durationLabel: string;
   description: string;
   features: string[];
