@@ -10,7 +10,7 @@ import firebaseConfig from '../../firebase-applet-config.json';
 
 const app = initializeApp({
   ...firebaseConfig,
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY
+  apiKey: import.meta.env.VITE_PUBLIC_FIREBASE_API_KEY
 });
 
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
