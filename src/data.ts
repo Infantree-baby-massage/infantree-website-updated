@@ -9,7 +9,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'baby-massage-monthly',
     name: 'Baby Massage Monthly Plan',
-    price: 11999,
+    price: 10999,
     durationLabel: 'month',
     description: 'Nurturing growth and sound sleep through safe daily home infant care.',
     features: [
@@ -25,7 +25,7 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'mother-recovery-monthly',
     name: 'Mother Relaxing Care Plan',
-    price: 13999,
+    price: 12999,
     durationLabel: 'month',
     description: 'Supporting recovery, relaxation, and muscle comforting for new mothers.',
     features: [
@@ -40,8 +40,8 @@ export const BASIC_PLANS: CareServicePlan[] = [
   {
     id: 'care-bundle-monthly',
     name: 'Care Bundle (Complete Care)',
-    price: 21999,
-    originalPrice: 25998,
+    price: 19999,
+    originalPrice: 23998,
     durationLabel: 'month',
     description: 'Our most-beloved, complete Mother + Baby wellness and healing experience.',
     features: [
@@ -62,9 +62,9 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
   id: 'bundle-3m',
   targetServiceId: 'bundle',
   months: 3,
-  totalPrice: 54999,
-  originalPrice: 65997,
-  savingPercent: 17,
+  totalPrice: 52999,
+  originalPrice: 59997,
+  savingPercent: 12,
   features: [
     'Daily baby massage by trained female specialist',
     'Daily mother recovery massage included',
@@ -79,9 +79,9 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     id: 'baby-3m',
     targetServiceId: 'baby',
     months: 3,
-    totalPrice: 32999,
-    originalPrice: 35997,
-    savingPercent: 8,
+    totalPrice: 30999,
+    originalPrice: 32999,
+    savingPercent: 6,
     features: [
       'Daily 30-min baby massage + gentle baby bath',
       'Consistent caregiver allocation for physical comfort',
@@ -94,9 +94,9 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     id: 'baby-6m',
     targetServiceId: 'baby',
     months: 6,
-    totalPrice: 62999,
-    originalPrice: 71994,
-    savingPercent: 12.5,
+    totalPrice: 59999,
+    originalPrice: 65994,
+    savingPercent: 9,
     features: [
       'Ongoing growth & comforting touch-massage steps',
       'Includes gentle herbal wash & warm bath routine',
@@ -109,9 +109,9 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     id: 'baby-12m',
     targetServiceId: 'baby',
     months: 12,
-    totalPrice: 114999,
-    originalPrice: 143988,
-    savingPercent: 20,
+    totalPrice: 113999,
+    originalPrice: 131988,
+    savingPercent: 14,
     features: [
       'Healthy milestones and long-term comfort care',
       'Thoughtful care throughout your baby\'s first year',
@@ -124,9 +124,9 @@ export const LONG_TERM_PLANS: LongTermPlan[] = [
     id: 'mother-3m',
     targetServiceId: 'mother',
     months: 3,
-    totalPrice: 37999,
-    originalPrice: 41997,
-    savingPercent: 9.5,
+    totalPrice: 34999,
+    originalPrice: 38997,
+    savingPercent: 10.26,
     features: [
       '3-months body tension release and abdominal toning',
       'Comforting support adapted to your recovery journey',
