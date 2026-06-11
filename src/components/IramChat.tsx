@@ -21,13 +21,13 @@ return (
           <p>Hello 👋 I am Iram, your Infantree Assistant.</p>
 
           <p className="mt-2">
-            Main baby massage, mother massage aur hamari services se jude
-            aapke sawalon me madad kar sakti hoon.
+            Main aapki kaise madad kar sakti hoon?
+
           </p>
 
           <p className="mt-2 font-medium">
-            Kya aap baby massage ke baare me jaanna chahte hain ya mother
-            massage ke baare me?
+          👶 Baby Massage
+          🤱 Mother Massage  
           </p>
         </div>
 
