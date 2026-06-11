@@ -8,7 +8,6 @@ return (
 <>
 {isOpen && ( <div className="fixed bottom-28 left-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"> <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center"> <div> <h3 className="font-semibold">Iram</h3> <p className="text-xs opacity-90">Infantree Assistant</p> </div>
 
-```
         <button
           onClick={() => setIsOpen(false)}
           className="text-xl"
@@ -60,7 +59,6 @@ return (
     />
   </button>
 </>
-```
 
 );
 }
