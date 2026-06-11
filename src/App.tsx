@@ -1401,7 +1401,7 @@ export default function App() {
           href="https://wa.me/917304367566"
           target="_blank"
           rel="noreferrer"
-          className="p-0"
+          className="p-0 animate-bounce"
           id="sticky-whatsapp-bubble"
           title="Instant Help over WhatsApp"
         >
