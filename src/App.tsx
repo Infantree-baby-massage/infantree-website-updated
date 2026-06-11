@@ -1405,7 +1405,11 @@ export default function App() {
           id="sticky-whatsapp-bubble"
           title="Instant Help over WhatsApp"
         >
-          <MessageCircle className="w-5 h-5 fill-white" />
+          <img
+  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+  alt="WhatsApp"
+  className="w-5 h-5"
+/>
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-sans tracking-wide text-xs">WhatsApp Care Advisor</span>
         </a>
       </div>
