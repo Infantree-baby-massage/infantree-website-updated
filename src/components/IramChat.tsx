@@ -6,16 +6,9 @@ const [isOpen, setIsOpen] = useState(false);
 
 return (
 <>
-{/* Chat Window */}
-{isOpen && ( <div className="fixed bottom-28 left-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+{isOpen && ( <div className="fixed bottom-28 left-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"> <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center"> <div> <h3 className="font-semibold">Iram</h3> <p className="text-xs opacity-90">Infantree Assistant</p> </div>
 
 ```
-      <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center">
-        <div>
-          <h3 className="font-semibold">Iram</h3>
-          <p className="text-xs opacity-90">Infantree Assistant</p>
-        </div>
-
         <button
           onClick={() => setIsOpen(false)}
           className="text-xl"
@@ -26,9 +19,7 @@ return (
 
       <div className="p-4">
         <div className="bg-gray-100 rounded-2xl p-3 text-sm text-gray-800">
-          <p>
-            Hello 👋 I am Iram, your Infantree Assistant.
-          </p>
+          <p>Hello 👋 I am Iram, your Infantree Assistant.</p>
 
           <p className="mt-2">
             Main baby massage, mother massage aur hamari services se jude
@@ -56,7 +47,6 @@ return (
     </div>
   )}
 
-  {/* Avatar */}
   <button
     aria-label="Iram"
     title="Iram"
