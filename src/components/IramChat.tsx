@@ -1,5 +1,5 @@
 import React from 'react';
-import iramAvatar from '../assets/images/iram-avatar.png';
+import iramAvatar from '../assets/images/iram-avatar.png.png';
 
 export default function IramChat() {
   return (
