@@ -18,6 +18,7 @@ import BookServiceModal from './components/BookServiceModal';
 import TrialBookingModal from './components/TrialBookingModal';
 import ContactForm from './components/ContactForm';
 import AdminPanel from './components/AdminPanel';
+import IramChat from './components/IramChat';
 
 // Generated Premium Images
 import infantMassageImg from './assets/images/infant_massage_luxury_1779711045730.png';
@@ -1482,7 +1483,7 @@ export default function App() {
         <AdminPanel onClose={() => setIsAdminPanelOpen(false)} />
       )}
 
-
+<IramChat />
 
     </div>
   );
