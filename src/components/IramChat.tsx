@@ -26,8 +26,8 @@ return (
           </p>
 
           <p className="mt-2 font-medium">
-          👶 Baby Massage
-          🤱 Mother Massage  
+          👶 Baby Massage ya
+          🤱 Mother Massage ?
           </p>
         </div>
 
