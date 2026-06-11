@@ -1401,17 +1401,16 @@ export default function App() {
           href="https://wa.me/917304367566"
           target="_blank"
           rel="noreferrer"
-          className="bg-[#25D366] hover:bg-[#128C7E] text-white p-3.5 sm:p-4 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-all text-sm font-semibold max-w-fit cursor-pointer border border-[#20ba59]/40 gap-2 shrink-0 group animate-bounce"
+          className="p-0"
           id="sticky-whatsapp-bubble"
           title="Instant Help over WhatsApp"
         >
           <img
   src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
   alt="WhatsApp"
-  className="w-5 h-5"
+  className="w-12 h-12"
 />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-sans tracking-wide text-xs">WhatsApp Care Advisor</span>
-        </a>
+      </a>
       </div>
 
       {/* Footer bar containing Parent Company Driblets Food Products Pvt. Ltd. and exact business details */}
