@@ -1396,7 +1396,7 @@ export default function App() {
       </main>
 
       {/* Persistent STICKY BOTTOM ACTIONS FOR WHATSAPP + alerts */}
-      <div className="fixed bottom-24 right-4 z-40 flex flex-col items-end gap-2" id="persistent-sticky-whatsapp">
+      <div className="fixed bottom-15 right-4 z-40 flex flex-col items-end gap-2" id="persistent-sticky-whatsapp">
         <a 
           href="https://wa.me/917304367566"
           target="_blank"
