@@ -6,7 +6,7 @@ export default function IramChat() {
     <button
       aria-label="Iram"
       title="Iram"
-      className="fixed bottom-8 left-6 z-50 bg-[#E69500] p-2 rounded-full shadow-lg hover:scale-105 transition-all duration-200"
+      className="fixed bottom-8 left-6 z-50 bg-[#E18A00] p-2 rounded-full shadow-lg hover:scale-105 transition-all duration-200"
     >
       <img
         src={iramAvatar}
