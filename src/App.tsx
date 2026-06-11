@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Shield, Check, MessageSquare, Phone, ChevronDown, ChevronUp, Star, MapPin, 
+  Shield, Check, MessageSquare, MessageCircle, Phone, ChevronDown, ChevronUp, Star, MapPin, 
   Sparkles, Gift, Heart, Calendar, Users, Eye, HelpCircle, Activity,
   ChevronLeft, ChevronRight, Quote, Menu, X, ArrowRight, Info
 } from 'lucide-react';
@@ -1405,8 +1405,8 @@ export default function App() {
           id="sticky-whatsapp-bubble"
           title="Instant Help over WhatsApp"
         >
-          <MessageSquare className="w-5 h-5 fill-white" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-sans tracking-wide text-xs">Chat with Care Advisor</span>
+          <MessageCircle className="w-5 h-5 fill-white" />
+          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-sans tracking-wide text-xs">WhatsApp Care Advisor</span>
         </a>
       </div>
 
