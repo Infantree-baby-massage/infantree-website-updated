@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
 
+import { db } from '../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
+
 export default function IramChat() {
 const [isOpen, setIsOpen] = useState(false);        
 const [message, setMessage] = useState('');
@@ -61,9 +64,15 @@ return (
 
         <button
   className="w-full mt-3 bg-[#006B4F] text-white py-2 rounded-xl"
-  onClick={() => {
+  onClick={async () => {
     if (!message.trim()) return;
 
+  await addDoc(collection(db, 'iram_messages'), {
+  sender: 'user',
+  message: message,
+  timestamp: new Date().toISOString()
+});        
+          
     setMessages([
       ...messages,
       { sender: 'user', text: message },
@@ -72,7 +81,12 @@ return (
         text: 'Thank you for your message. I am still learning and will assist you shortly.'
       }
     ]);
-
+await addDoc(collection(db, 'iram_messages'), {
+  sender: 'iram',
+  message: 'Thank you for your message. I am still learning and will assist you shortly.',
+  timestamp: new Date().toISOString()
+});
+          
     setMessage('');
   }}
 >
