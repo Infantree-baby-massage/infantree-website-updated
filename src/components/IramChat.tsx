@@ -66,13 +66,13 @@ return (
   className="w-full mt-3 bg-[#006B4F] text-white py-2 rounded-xl"
   onClick={async () => {
     if (!message.trim()) return;
-
+console.log('Saving user message...');    
   await addDoc(collection(db, 'iram_messages'), {
   sender: 'user',
   message: message,
   timestamp: new Date().toISOString()
 });        
-          
+  console.log('User message saved');        
     setMessages([
       ...messages,
       { sender: 'user', text: message },
@@ -86,6 +86,7 @@ await addDoc(collection(db, 'iram_messages'), {
   message: 'Thank you for your message. I am still learning and will assist you shortly.',
   timestamp: new Date().toISOString()
 });
+   console.log('Iram reply saved');
           
     setMessage('');
   }}
