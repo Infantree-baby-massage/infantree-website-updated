@@ -67,27 +67,39 @@ return (
   onClick={async () => {
     if (!message.trim()) return;
 console.log('Saving user message...');    
-  await addDoc(collection(db, 'iram_messages'), {
-  sender: 'user',
-  message: message,
-  timestamp: new Date().toISOString()
-});        
-  console.log('User message saved');        
-    setMessages([
-      ...messages,
-      { sender: 'user', text: message },
-      {
-        sender: 'iram',
-        text: 'Thank you for your message. I am still learning and will assist you shortly.'
-      }
-    ]);
-await addDoc(collection(db, 'iram_messages'), {
-  sender: 'iram',
-  message: 'Thank you for your message. I am still learning and will assist you shortly.',
-  timestamp: new Date().toISOString()
-});
-   console.log('Iram reply saved');
           
+ try {
+  await addDoc(collection(db, 'iram_messages'), {
+    sender: 'user',
+    message: message,
+    timestamp: new Date().toISOString()
+  });
+
+  console.log('User message saved');
+} catch (error) {
+  console.error('Firestore Error:', error);
+}
+  setMessages([
+  ...messages,
+  { sender: 'user', text: message },
+  {
+    sender: 'iram',
+    text: 'Thank you for your message. I am still learning and will assist you shortly.'
+  }
+]);
+          
+try {
+  await addDoc(collection(db, 'iram_messages'), {
+    sender: 'iram',
+    message: 'Thank you for your message. I am still learning and will assist you shortly.',
+    timestamp: new Date().toISOString()
+  });
+
+  console.log('Iram reply saved');
+} catch (error) {
+  console.error('Firestore Error:', error);
+}
+              
     setMessage('');
   }}
 >
