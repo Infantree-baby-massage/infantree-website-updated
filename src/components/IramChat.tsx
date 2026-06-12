@@ -4,12 +4,7 @@ import iramAvatar from '../assets/images/iram-avatar.png.png';
 export default function IramChat() {
 const [isOpen, setIsOpen] = useState(false);        
 const [message, setMessage] = useState('');
-const [messages, setMessages] = useState([
-  {
-    sender: 'iram',
-    text: 'Hello 👋 I am Iram, your Infantree Assistant.'
-  }
-]);        
+const [messages, setMessages] = useState([]);        
 
 return (
 <>
