@@ -70,5 +70,10 @@ service cloud.firestore {
       allow create: if isValidTrialRequest(request.resource.data);
       allow read, update, delete: if isAdmin();
     }
+
+match /iram_messages/{messageId} {
+  allow create: if true;
+  allow read, update, delete: if isAdmin();
+}
   }
 }
