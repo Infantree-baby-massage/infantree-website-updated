@@ -2,12 +2,33 @@ import React, { useState } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
 
 import { db } from '../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc
+} from 'firebase/firestore';
 
 export default function IramChat() {
 const [isOpen, setIsOpen] = useState(false);        
 const [message, setMessage] = useState('');
-const [messages, setMessages] = useState([]);        
+const [messages, setMessages] = useState([]);  
+
+const getVisitorId = () => {
+  let visitorId = localStorage.getItem('visitorId');
+
+  if (!visitorId) {
+    visitorId =
+      'VIS_' +
+      Date.now() +
+      '_' +
+      Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    localStorage.setItem('visitorId', visitorId);
+  }
+
+  return visitorId;
+};        
 
 return (
 <>
@@ -67,18 +88,48 @@ return (
   onClick={async () => {
     if (!message.trim()) return;
 console.log('Saving user message...');    
-          
- try {
-  await addDoc(collection(db, 'iram_messages'), {
-    sender: 'user',
-    message: message,
-    timestamp: new Date().toISOString()
-  });
 
-  console.log('User message saved');
-} catch (error) {
-  console.error('Firestore Error:', error);
-}
+ const visitorId = getVisitorId();
+
+const sessionRef = doc(db, 'chat_sessions', visitorId);
+
+const sessionSnap = await getDoc(sessionRef);
+
+const userMessage = {
+  sender: 'user',
+  message: message,
+  timestamp: new Date().toISOString()
+};
+
+const iramReply = {
+  sender: 'iram',
+  message: 'Thank you for your message. I am still learning and will assist you shortly.',
+  timestamp: new Date().toISOString()
+};
+
+if (!sessionSnap.exists()) {
+  await setDoc(sessionRef, {
+    visitorId: visitorId,
+    leadStatus: 'New',
+    totalMessages: 2,
+    firstVisit: new Date().toISOString(),
+    lastVisit: new Date().toISOString(),
+    messages: [userMessage, iramReply]
+  });
+} else {
+  const existingData = sessionSnap.data();
+
+  await updateDoc(sessionRef, {
+    lastVisit: new Date().toISOString(),
+    totalMessages: (existingData.totalMessages || 0) + 2,
+    messages: [
+      ...(existingData.messages || []),
+      userMessage,
+      iramReply
+    ]
+  });
+}         
+          
   setMessages([
   ...messages,
   { sender: 'user', text: message },
@@ -87,19 +138,7 @@ console.log('Saving user message...');
     text: 'Thank you for your message. I am still learning and will assist you shortly.'
   }
 ]);
-          
-try {
-  await addDoc(collection(db, 'iram_messages'), {
-    sender: 'iram',
-    message: 'Thank you for your message. I am still learning and will assist you shortly.',
-    timestamp: new Date().toISOString()
-  });
-
-  console.log('Iram reply saved');
-} catch (error) {
-  console.error('Firestore Error:', error);
-}
-              
+                     
     setMessage('');
   }}
 >
