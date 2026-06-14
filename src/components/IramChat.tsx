@@ -183,15 +183,15 @@ return (
 
 </div>
 
-{showScrollButton && (
+{true && (
   <button
     onClick={() =>
       messagesEndRef.current?.scrollIntoView({
         behavior: 'smooth'
       })
     }
-    className="absolute bottom-24 right-4 z-50 w-8 h-8 bg-white rounded-full shadow-md flex flex-col items-center justify-center text-gray-600"
-  >
+    className="fixed bottom-40 right-8 z-[9999] w-8 h-8 bg-white rounded-full shadow-md flex flex-col items-center justify-center text-gray-600"
+    >
     <span className="leading-none text-xs">⌄</span>
     <span className="leading-none -mt-2 text-xs">⌄</span>
   </button>
@@ -227,6 +227,7 @@ return (
   className="w-full mt-3 bg-[#006B4F] text-white py-2 rounded-xl"
   onClick={async () => {
     if (!message.trim()) return;
+    localStorage.removeItem('chatCleared');
 console.log('Saving user message...');    
 
  const visitorId = getVisitorId();
