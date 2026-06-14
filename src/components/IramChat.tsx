@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
 
 import { db } from '../lib/firebase';
@@ -14,6 +14,10 @@ const [isOpen, setIsOpen] = useState(false);
 const [message, setMessage] = useState('');
 const [messages, setMessages] = useState([]);  
 
+const messagesEndRef = useRef(null);
+const chatContainerRef = useRef(null);
+const [showScrollButton, setShowScrollButton] = useState(false);  
+
 const getVisitorId = () => {
   let visitorId = localStorage.getItem('visitorId');
 
@@ -26,7 +30,39 @@ Math.random().toString(36).substring(2, 8).toUpperCase();
   }
 
   return visitorId;
-};        
+};     
+
+  useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({
+    behavior: 'smooth'
+  });
+}, [messages]);
+
+useEffect(() => {
+  const container = chatContainerRef.current;
+
+  const handleScroll = () => {
+    if (!container) return;
+    
+    const isNearBottom =
+      container.scrollHeight -
+      container.scrollTop -
+      container.clientHeight <
+      100;
+
+    setShowScrollButton(!isNearBottom);
+  };
+
+  if (container) {
+    container.addEventListener('scroll', handleScroll);
+  }
+
+  return () => {
+    if (container) {
+      container.removeEventListener('scroll', handleScroll);
+    }
+  };
+}, []);
 
 return (
 <>
@@ -56,7 +92,10 @@ return (
           </p>
                 
         </div>
-        <div className="space-y-2 mb-4">
+        <div
+  ref={chatContainerRef}
+  className="space-y-2 mb-4 max-h-[350px] overflow-y-auto pr-2"
+>
   {messages.map((msg, index) => (
     <div
       key={index}
@@ -69,21 +108,37 @@ return (
       {msg.text}
     </div>
   ))}
-</div>      
+
+<div ref={messagesEndRef}></div>
+
+</div>
+
+{showScrollButton && (
+  <button
+    onClick={() =>
+      messagesEndRef.current?.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
+    className="fixed bottom-36 right-8 bg-[#006B4F] text-white px-3 py-2 rounded-full shadow-lg z-50"
+  >
+    ↓ Latest
+  </button>
+)}        
 
         <div className="mt-4">
-<input
-  type="text"
+<textarea
   value={message}
   onChange={(e) => setMessage(e.target.value)}
   onKeyDown={(e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       document.getElementById('sendBtn')?.click();
     }
   }}
   placeholder="Type your message..."
-  className="w-full border rounded-xl px-3 py-2 text-sm"
+  rows={3}
+  className="w-full border rounded-xl px-3 py-2 text-sm resize-none"
 />
         </div>
 
