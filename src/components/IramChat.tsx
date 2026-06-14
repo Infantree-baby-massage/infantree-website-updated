@@ -91,7 +91,7 @@ useEffect(() => {
 return (
 <>
 {isOpen && ( 
-        <div className="fixed bottom-28 left-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"> <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center"> <div> <h3 className="font-semibold">Iram</h3> <p className="text-xs opacity-90">Infantree Assistant</p> </div>
+        <div className="fixed bottom-28 left-6 z-50 w-80 max-w-[90vw] h-[70vh] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col"> <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center"> <div> <h3 className="font-semibold">Iram</h3> <p className="text-xs opacity-90">Infantree Assistant</p> </div>
 
         <button
           onClick={() => setIsOpen(false)}
@@ -101,7 +101,12 @@ return (
         </button>
       </div>
 
-      <div className="p-4">
+<div
+  ref={chatContainerRef}
+  className="flex-1 space-y-2 mb-4 overflow-y-auto pr-2"
+>
+          
+      <div className="p-4 relative">
         <div className="bg-gray-100 rounded-2xl p-3 text-sm text-gray-800">
           <p>Hello 👋 I am Iram, your Infantree Assistant.</p>
 
@@ -111,15 +116,13 @@ return (
           </p>
 
           <p className="mt-2 font-medium">
-          👶 Baby Massage ya
+          👶 Baby Massage or 
           🤱 Mother Massage ?
           </p>
                 
         </div>
-        <div
-  ref={chatContainerRef}
-  className="space-y-2 mb-4 max-h-[350px] overflow-y-auto pr-2"
->
+          
+          
   {messages.map((msg, index) => (
     <div
       key={index}
@@ -137,34 +140,38 @@ return (
 
 </div>
 
-(
+{true && (
   <button
     onClick={() =>
       messagesEndRef.current?.scrollIntoView({
         behavior: 'smooth'
       })
     }
-    className="fixed bottom-36 right-8 bg-[#006B4F] text-white px-3 py-2 rounded-full shadow-lg z-50"
+    className="absolute bottom-24 right-4 bg-[#006B4F] text-white w-12 h-12 rounded-full shadow-lg z-50 flex items-center justify-center"
   >
-    ↓ Latest
+    ↓
   </button>
-)        
+)}
 
         <div className="mt-4">
 <textarea
   value={message}
   onChange={(e) => setMessage(e.target.value)}
   onKeyDown={(e) => {
-  if (
-    e.key === 'Enter' &&
-    !e.shiftKey &&
-    window.innerWidth > 768
-  ) {
-    e.preventDefault();
-    document.getElementById('sendBtn')?.click();
-  }
-}}
-  
+    const isMobile =
+      /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+      );
+
+    if (
+      e.key === 'Enter' &&
+      !e.shiftKey &&
+      !isMobile
+    ) {
+      e.preventDefault();
+      document.getElementById('sendBtn')?.click();
+    }
+  }}
   placeholder="Type your message..."
   rows={3}
   className="w-full border rounded-xl px-3 py-2 text-sm resize-none"
