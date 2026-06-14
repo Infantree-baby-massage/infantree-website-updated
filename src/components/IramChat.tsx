@@ -64,6 +64,30 @@ useEffect(() => {
   };
 }, []);
 
+  useEffect(() => {
+  const loadMessages = async () => {
+    const visitorId = getVisitorId();
+
+    const sessionRef = doc(db, 'chat_sessions', visitorId);
+    const sessionSnap = await getDoc(sessionRef);
+
+    if (sessionSnap.exists()) {
+      const data = sessionSnap.data();
+
+      if (data.messages) {
+        setMessages(
+          data.messages.map((msg) => ({
+            sender: msg.sender,
+            text: msg.message
+          }))
+        );
+      }
+    }
+  };
+
+  loadMessages();
+}, []);
+
 return (
 <>
 {isOpen && ( 
@@ -113,7 +137,7 @@ return (
 
 </div>
 
-{showScrollButton && (
+(
   <button
     onClick={() =>
       messagesEndRef.current?.scrollIntoView({
@@ -124,18 +148,23 @@ return (
   >
     ↓ Latest
   </button>
-)}        
+)        
 
         <div className="mt-4">
 <textarea
   value={message}
   onChange={(e) => setMessage(e.target.value)}
   onKeyDown={(e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      document.getElementById('sendBtn')?.click();
-    }
-  }}
+  if (
+    e.key === 'Enter' &&
+    !e.shiftKey &&
+    window.innerWidth > 768
+  ) {
+    e.preventDefault();
+    document.getElementById('sendBtn')?.click();
+  }
+}}
+  
   placeholder="Type your message..."
   rows={3}
   className="w-full border rounded-xl px-3 py-2 text-sm resize-none"
