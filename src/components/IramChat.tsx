@@ -170,16 +170,17 @@ return (
 
 </div>
 
-{true && (
+{showScrollButton && (
   <button
     onClick={() =>
       messagesEndRef.current?.scrollIntoView({
         behavior: 'smooth'
       })
     }
-    className="absolute bottom-24 right-4 bg-[#006B4F] text-white w-12 h-12 rounded-full shadow-lg z-50 flex items-center justify-center"
+    className="absolute bottom-24 right-4 z-50 w-8 h-8 bg-white rounded-full shadow-md flex flex-col items-center justify-center text-gray-600"
   >
-    ↓
+    <span className="leading-none text-xs">⌄</span>
+    <span className="leading-none -mt-2 text-xs">⌄</span>
   </button>
 )}
 
