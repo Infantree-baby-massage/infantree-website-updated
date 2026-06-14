@@ -17,6 +17,7 @@ const [messages, setMessages] = useState([]);
 const messagesEndRef = useRef(null);
 const chatContainerRef = useRef(null);
 const [showScrollButton, setShowScrollButton] = useState(false);  
+const [showMenu, setShowMenu] = useState(false);  
 
 const getVisitorId = () => {
   let visitorId = localStorage.getItem('visitorId');
@@ -93,12 +94,41 @@ return (
 {isOpen && ( 
         <div className="fixed bottom-28 left-6 z-50 w-80 max-w-[90vw] h-[70vh] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col"> <div className="bg-[#006B4F] text-white px-4 py-3 flex justify-between items-center"> <div> <h3 className="font-semibold">Iram</h3> <p className="text-xs opacity-90">Infantree Assistant</p> </div>
 
+        <div className="flex items-center gap-2">
+
+  <div className="relative">
+
+    <button
+      onClick={() => setShowMenu(!showMenu)}
+      className="text-xl text-white px-1"
+    >
+      ⋮
+    </button>
+
+    {showMenu && (
+      <div className="absolute right-0 top-8 bg-white shadow-lg rounded-lg border z-50 min-w-[120px]">
         <button
-          onClick={() => setIsOpen(false)}
-          className="text-xl"
+          onClick={() => {
+            setMessages([]);
+            setShowMenu(false);
+          }}
+          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         >
-          ×
+          Clear Chat
         </button>
+      </div>
+    )}
+
+  </div>
+
+  <button
+    onClick={() => setIsOpen(false)}
+    className="text-xl text-white"
+  >
+    ×
+  </button>
+
+</div>
       </div>
 
 <div
