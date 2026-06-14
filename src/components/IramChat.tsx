@@ -49,14 +49,19 @@ useEffect(() => {
       container.scrollHeight -
       container.scrollTop -
       container.clientHeight <
-      100;
+      30;
 
     setShowScrollButton(!isNearBottom);
   };
 
-  if (container) {
-    container.addEventListener('scroll', handleScroll);
-  }
+if (container) {
+  handleScroll();
+
+  container.addEventListener(
+    'scroll',
+    handleScroll
+  );
+}
 
   return () => {
     if (container) {
@@ -72,6 +77,13 @@ useEffect(() => {
     const sessionRef = doc(db, 'chat_sessions', visitorId);
     const sessionSnap = await getDoc(sessionRef);
 
+    const chatCleared =
+  localStorage.getItem('chatCleared') === 'true';
+
+if (chatCleared) {
+  return;
+}
+    
     if (sessionSnap.exists()) {
       const data = sessionSnap.data();
 
@@ -110,6 +122,7 @@ return (
         <button
           onClick={() => {
             setMessages([]);
+            localStorage.setItem('chatCleared', 'true');
             setShowMenu(false);
           }}
           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
