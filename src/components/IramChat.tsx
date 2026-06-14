@@ -19,10 +19,8 @@ const getVisitorId = () => {
 
   if (!visitorId) {
     visitorId =
-      'VIS_' +
-      Date.now() +
-      '_' +
-      Math.random().toString(36).substring(2, 8).toUpperCase();
+    'VIS_' +
+Math.random().toString(36).substring(2, 8).toUpperCase();
 
     localStorage.setItem('visitorId', visitorId);
   }
@@ -74,16 +72,23 @@ return (
 </div>      
 
         <div className="mt-4">
-          <input
+<input
   type="text"
   value={message}
   onChange={(e) => setMessage(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('sendBtn')?.click();
+    }
+  }}
   placeholder="Type your message..."
   className="w-full border rounded-xl px-3 py-2 text-sm"
 />
         </div>
 
-        <button
+  <button
+  id="sendBtn"
   className="w-full mt-3 bg-[#006B4F] text-white py-2 rounded-xl"
   onClick={async () => {
     if (!message.trim()) return;
@@ -109,13 +114,22 @@ const iramReply = {
 
 if (!sessionSnap.exists()) {
   await setDoc(sessionRef, {
-    visitorId: visitorId,
-    leadStatus: 'New',
-    totalMessages: 2,
-    firstVisit: new Date().toISOString(),
-    lastVisit: new Date().toISOString(),
-    messages: [userMessage, iramReply]
-  });
+  visitorId: visitorId,
+
+  name: '',
+  mobile: '',
+  babyAge: '',
+  location: '',
+
+  leadStatus: 'New',
+
+  totalMessages: 2,
+
+  firstVisit: new Date().toISOString(),
+  lastVisit: new Date().toISOString(),
+
+  messages: [userMessage, iramReply]
+});
 } else {
   const existingData = sessionSnap.data();
 
