@@ -16,7 +16,7 @@ const [messages, setMessages] = useState([]);
 
 const messagesEndRef = useRef(null);
 const chatContainerRef = useRef(null);
-const [showScrollButton, setShowScrollButton] = useState(true); 
+const [showScrollButton, setShowScrollButton] = useState(false); 
 const [showMenu, setShowMenu] = useState(false);  
 
 const getVisitorId = () => {
@@ -43,6 +43,7 @@ useEffect(() => {
   const container = chatContainerRef.current;
 
   const handleScroll = () => {
+    console.log('SCROLL WORKING');
     if (!container) return;
     
     const isNearBottom =
