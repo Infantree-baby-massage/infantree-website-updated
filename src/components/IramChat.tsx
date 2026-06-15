@@ -16,7 +16,7 @@ const [messages, setMessages] = useState([]);
 
 const messagesEndRef = useRef(null);
 const chatContainerRef = useRef(null);
-const [showScrollButton, setShowScrollButton] = useState(false); 
+const [showScrollButton, setShowScrollButton] = useState(true); 
 const [showMenu, setShowMenu] = useState(false);  
 
 const getVisitorId = () => {
