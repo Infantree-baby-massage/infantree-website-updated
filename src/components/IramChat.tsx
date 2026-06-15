@@ -49,7 +49,7 @@ useEffect(() => {
       container.scrollHeight -
       container.scrollTop -
       container.clientHeight <
-      30;
+      200;
 
     setShowScrollButton(!isNearBottom);
   };
