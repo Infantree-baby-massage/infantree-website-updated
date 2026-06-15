@@ -183,20 +183,6 @@ return (
 
 </div>
 
-{true && (
-  <button
-    onClick={() =>
-      messagesEndRef.current?.scrollIntoView({
-        behavior: 'smooth'
-      })
-    }
-    className="fixed bottom-40 right-8 z-[9999] w-8 h-8 bg-white rounded-full shadow-md flex flex-col items-center justify-center text-gray-600"
-    >
-    <span className="leading-none text-xs">⌄</span>
-    <span className="leading-none -mt-2 text-xs">⌄</span>
-  </button>
-)}
-
         <div className="mt-4">
 <textarea
   value={message}
@@ -294,6 +280,21 @@ if (!sessionSnap.exists()) {
 >
   Send
 </button>
+
+{true && (
+  <button
+    onClick={() =>
+      messagesEndRef.current?.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
+    className="fixed bottom-40 right-8 z-[9999] w-8 h-8 bg-white rounded-full shadow-md flex flex-col items-center justify-center text-gray-600"
+    >
+    <span className="leading-none text-xs">⌄</span>
+    <span className="leading-none -mt-2 text-xs">⌄</span>
+  </button>
+)}
+  
       </div>
     </div>
   )}
