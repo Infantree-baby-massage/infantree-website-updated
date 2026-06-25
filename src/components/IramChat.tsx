@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
+import faqs from '../data/faqs.json';
 
 import { db } from '../lib/firebase';
 import {
