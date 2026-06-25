@@ -208,6 +208,10 @@ return (
   className="w-full border rounded-xl px-3 py-2 text-sm resize-none"
 />
         </div>
+  
+  <p className="text-[10px] text-gray-500 text-center mt-2 mb-2">
+  Iram responses are for guidance only.
+</p>
 
   <button
   id="sendBtn"
