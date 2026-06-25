@@ -3,6 +3,20 @@ import iramAvatar from '../assets/images/iram-avatar.png.png';
 import faqs from './faqs.json';
 
 import { db } from '../lib/firebase';
+const getIramResponse = (userMessage) => {
+  const msg = userMessage.toLowerCase();
+
+  const matchedFaq = faqs.find((faq) =>
+    msg.includes(faq.question.toLowerCase()) ||
+    faq.question.toLowerCase().includes(msg)
+  );
+
+  return (
+    matchedFaq?.answer ||
+    'Thank you for your message. I am still learning and will assist you shortly.'
+  );
+};
+
 import {
   doc,
   getDoc,
@@ -236,9 +250,11 @@ const userMessage = {
   timestamp: new Date().toISOString()
 };
 
+const iramResponseText = getIramResponse(message);    
+
 const iramReply = {
   sender: 'iram',
-  message: 'Thank you for your message. I am still learning and will assist you shortly.',
+  message: iramResponseText,
   timestamp: new Date().toISOString()
 };
 
@@ -279,7 +295,7 @@ if (!sessionSnap.exists()) {
   { sender: 'user', text: message },
   {
     sender: 'iram',
-    text: 'Thank you for your message. I am still learning and will assist you shortly.'
+    text: iramResponseText
   }
 ]);
                      
