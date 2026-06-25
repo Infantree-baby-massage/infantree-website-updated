@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "category": "Pricing",
+    "question": "What is the trial session cost?",
+    "answer": "The trial session costs ₹1,299."
+  },
+  {
+    "id": 2,
+    "category": "Service Areas",
+    "question": "Which areas do you serve?",
+    "answer": "Currently Infantree actively serves Navi Mumbai locations."
+  },
+  {
+    "id": 3,
+    "category": "Booking",
+    "question": "How can I book a session?",
+    "answer": "You can book a session through our website or by contacting our team."
+  }
+]
