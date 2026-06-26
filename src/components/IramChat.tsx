@@ -1,20 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
-import faqs from './faqs.json';
+import knowledgeBase from './knowledgeBase.json';
 
 import { db } from '../lib/firebase';
 const getIramResponse = (userMessage) => {
   const msg = userMessage.toLowerCase();
 
-  const matchedFaq = faqs.find((faq) =>
-    msg.includes(faq.question.toLowerCase()) ||
-    faq.question.toLowerCase().includes(msg)
-  );
+  const intent = knowledgeBase.intents.find((item) => {
+    return item.intent === "TRIAL_PRICE" &&
+      (
+        msg.includes("trial") ||
+        msg.includes("price") ||
+        msg.includes("cost") ||
+        msg.includes("charge")
+      );
+  });
 
-  return (
-    matchedFaq?.answer ||
-    'Thank you for your message. I am still learning and will assist you shortly.'
-  );
+  if (intent) {
+    return intent.answers.en;
+  }
+
+  return "Thank you for your message. I am still learning and will assist you shortly.";
 };
 
 import {
