@@ -4,11 +4,11 @@
     {
       "intent": "TRIAL_PRICE",
       "category": "Pricing",
-      "answers": {
-        "en": "The trial session costs ₹1,299.",
-        "hi": "ट्रायल सेशन की कीमत ₹1,299 है।",
-        "mr": "ट्रायल सेशनची किंमत ₹1,299 आहे."
-      }
+"answers": {
+  "en": "✅ KNOWLEDGE BASE WORKING - Trial session costs ₹1,299.",
+  "hi": "✅ KNOWLEDGE BASE WORKING - ट्रायल सेशन की कीमत ₹1,299 है।",
+  "mr": "✅ KNOWLEDGE BASE WORKING - ट्रायल सेशनची किंमत ₹1,299 आहे."
+}
     }
   ]
 }
