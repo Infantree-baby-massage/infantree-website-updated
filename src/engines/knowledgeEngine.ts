@@ -1,4 +1,4 @@
-import knowledgeBase from "../data/knowledgeBase.json";
+import knowledgeBase from "../components/knowledgeBase.json";
 
 export const getKnowledge = (intent: string) => {
 
