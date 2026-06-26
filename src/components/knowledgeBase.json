@@ -3,12 +3,27 @@
   "intents": [
     {
       "intent": "TRIAL_PRICE",
-      "category": "Pricing",
-"answers": {
-  "en": "✅ KNOWLEDGE BASE WORKING - Trial session costs ₹1,299.",
-  "hi": "✅ KNOWLEDGE BASE WORKING - ट्रायल सेशन की कीमत ₹1,299 है।",
-  "mr": "✅ KNOWLEDGE BASE WORKING - ट्रायल सेशनची किंमत ₹1,299 आहे."
-}
+      "answers": {
+        "en": "The trial session costs ₹1,299.",
+        "hi": "ट्रायल सेशन की कीमत ₹1,299 है।",
+        "mr": "ट्रायल सेशनची किंमत ₹1,299 आहे."
+      }
+    },
+    {
+      "intent": "BABY_MASSAGE",
+      "answers": {
+        "en": "Infantree provides professional baby massage services at home.",
+        "hi": "Infantree घर पर प्रोफेशनल बेबी मसाज सेवा प्रदान करती है।",
+        "mr": "Infantree घरी प्रोफेशनल बेबी मसाज सेवा देते."
+      }
+    },
+    {
+      "intent": "MOTHER_MASSAGE",
+      "answers": {
+        "en": "Infantree provides postpartum mother massage at home.",
+        "hi": "Infantree घर पर पोस्टपार्टम मदर मसाज सेवा प्रदान करती है।",
+        "mr": "Infantree घरी पोस्टपार्टम मदर मसाज सेवा देते."
+      }
     }
   ]
 }
