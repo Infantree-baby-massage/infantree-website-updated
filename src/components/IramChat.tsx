@@ -1,27 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import iramAvatar from '../assets/images/iram-avatar.png.png';
-import knowledgeBase from './knowledgeBase.json';
 
 import { db } from '../lib/firebase';
-const getIramResponse = (userMessage) => {
-  const msg = userMessage.toLowerCase();
-
-  const intent = knowledgeBase.intents.find((item) => {
-    return item.intent === "TRIAL_PRICE" &&
-      (
-        msg.includes("trial") ||
-        msg.includes("price") ||
-        msg.includes("cost") ||
-        msg.includes("charge")
-      );
-  });
-
-  if (intent) {
-    return intent.answers.en;
-  }
-
-  return "Thank you for your message. I am still learning and will assist you shortly.";
-};
+import { generateResponse } from "../engines/responseEngine";
 
 import {
   doc,
@@ -33,7 +14,7 @@ import {
 export default function IramChat() {
 const [isOpen, setIsOpen] = useState(false);        
 const [message, setMessage] = useState('');
-const [messages, setMessages] = useState([]);  
+const [messages, setMessages] = useState([]); 
 
 const messagesEndRef = useRef(null);
 const chatContainerRef = useRef(null);
@@ -255,7 +236,12 @@ const userMessage = {
   timestamp: new Date().toISOString()
 };
 
-const iramResponseText = getIramResponse(message);    
+const response = generateResponse(
+  message,
+  visitorId
+);
+
+const iramResponseText = response.reply;
 
 const iramReply = {
   sender: 'iram',
