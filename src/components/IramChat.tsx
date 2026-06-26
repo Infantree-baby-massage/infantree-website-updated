@@ -238,7 +238,6 @@ return (
   id="sendBtn"
   className="w-full mt-3 bg-[#006B4F] text-white py-2 rounded-xl"
   onClick={async () => {
-    console.log('FAQs Loaded:', faqs);
     
     if (!message.trim()) return;
     localStorage.removeItem('chatCleared');
